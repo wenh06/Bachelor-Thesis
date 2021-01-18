@@ -1,4 +1,43 @@
 \chapter{自守表示}
 \label{chap:aut_rep}
 
-待添加\cite{IEEE-1363}
+本章主要介绍的是$GL(n)$的自守表示，因为``自守表示及其$L$-函数是Langlands纲领的核心''\cite{gelbart1984elementary}。本章最终的目的是给出守表示（automorphic representation）以及自守尖点表示（automorphic cuspidal representation）的定义，以及两个大定理Tensor product theorem和Multiplicity one theorem。
+
+\section{一些基本概念}
+\label{sec:aut_rep_intro}
+
+我们先来介绍一些基本概念。
+
+设$k$为固定的代数闭域。定义$k$上的$n$维仿射空间\cite{alg_geo}
+$$
+\mathbb{A}_k^n = \left\{ (a_1,\cdots,a_n) \  \middle| \  a_i\in k, 1 \leqslant i \leqslant n \right\},
+$$
+赋予$\mathbb{A}_k^n$ Zariski拓扑：取所有予$\mathbb{A}_k^n$所有代数集合的补为予$\mathbb{A}_k^n$的开集。这里，予$\mathbb{A}_k^n$的代数集合被定义为某$n$个变量的$k$系数多项式集合的公共零点集。
+
+\begin{definition}
+$\mathbb{A}_k^n$的一个不可约闭子集$X$就称为仿射代数簇。
+\end{definition}
+这里不可约指的是不能分解成两个真闭子集的并。设$R$为包含$k$的一个环，我们记$X(R)$为坐标取值在$R$中的$X$的点。即设$X = Z(T)$，为多项式集$T$的零点集，那么
+$$
+X(R) = \left\{ (a_1,\cdots,a_n) \in R^n \  \middle| \ \forall f\in T, f(a_i\in k, 1 \leqslant i \leqslant n) = 0 \right\}.
+$$
+
+接下来，我们给出域k上仿射代数群的定义。
+\begin{definition}
+设$G$为$k$上的一个仿射代数簇，被赋予了一个特殊点$1 \in G(k)$，群的乘法$G \times G \rightarrow G$由多项式给出，使得对任意的包含$k$的环$R$，$G(R)$在这个乘法下成为一个群。那么我们称$G$为域$k$上的一个仿射代数群。
+\end{definition}
+
+以下设$F$为一个整体域，即数域或函数域。记$\mathfrak{o}_v$为$F$在$v$处完备化$F_{v}$的整数环。定义$F$的阿代尔环$\mathbb{A}_F$和伊代尔群$\mathbb{A}_F^\times$如下：
+\begin{align*}
+\mathbb{A}_F & = \left\{ (a_v) \in \prod\limits_v F_v \ \middle|\ \text{对$F$的几乎所有的有限素点$v$有} a_v\in \mathfrak{o}_v \right\}, \\[1em]
+\mathbb{A}_F^\times & = \left\{ (a_v) \in \prod\limits_v F_v \ \middle|\ \text{对$F$的几乎所有的有限素点$v$有} a_v\in \mathfrak{o}_v^\times \right\}.
+\end{align*}
+
+我们给出表示的相关概念。
+
+\begin{definition}
+设$G$为任一群，$V$为某个域$k$上的线性空间。如果存在群同态$\rho: G \rightarrow \operatorname{GL}(V)$，其中$\operatorname{GL}(V)$为一般线性群，那么我们称$(\rho, V)$，简记成$V$或者$\rho$。
+\end{definition}
+一个等价的定义是$G$在$V$上有一个线性作用，则称$V$为$G$的一个表示。另一个等价的定义是$V$是具有$kG$-模结构，则称$V$为$G$的一个表示。
+
+若$U$是$V$的一个子空间， 且在$G$的作用下为不变子空间， 那么称$(\rho|_U,U)$为$(\rho, V)$的一个子表示。考虑商空间$V/U$，对$g \in G, x + U \in V/U$，定义$g(x + U) = g(x) + U$，那么我们得到$G$在$V/U$上的一个作用，称为$(\rho, V)$的一个商表示，记为$(V/U, \rho_{V/U})$。群$G$的非零表示$(\rho, V)$称为是不可约的，如果他没有非平凡的子表示。
