@@ -41,3 +41,40 @@ $$
 一个等价的定义是$G$在$V$上有一个线性作用，则称$V$为$G$的一个表示。另一个等价的定义是$V$是具有$kG$-模结构，则称$V$为$G$的一个表示。
 
 若$U$是$V$的一个子空间， 且在$G$的作用下为不变子空间， 那么称$(\rho|_U,U)$为$(\rho, V)$的一个子表示。考虑商空间$V/U$，对$g \in G, x + U \in V/U$，定义$g(x + U) = g(x) + U$，那么我们得到$G$在$V/U$上的一个作用，称为$(\rho, V)$的一个商表示，记为$(V/U, \rho_{V/U})$。群$G$的非零表示$(\rho, V)$称为是不可约的，如果他没有非平凡的子表示。
+
+设$(\rho_1, V_1)$和$(\rho_2, V_2)$是群$G$的两个表示，我们称他们是同构的，如果存在单满的$k$-线性映射$f: V_1 \rightarrow V_2$，使得对任一$g \in G$有下面的交换图
+\begin{center}
+\begin{tikzcd}
+V_1 \arrow[r, "f"] \arrow[d, "\rho_1(g)"'] & V_2 \arrow[d, "\rho_2(g)"] \\
+V_1 \arrow[r, "f"] & V_2
+\end{tikzcd}
+\end{center}
+
+关于表示的进一步知识，可以参考\inlinecite{gp_rep}。
+
+现在再来介绍限制直积\cite{nt1}和限制张量积\cite{bump1998automorphic}的概念。
+
+\begin{definition}
+设$(G_\lambda)_{\lambda\in\Lambda}$为一族局部紧群，$S$为$\Lambda$的有限子集合，对于每个$\lambda \in \Lambda \setminus S$给定$G_\lambda$的一个紧开子群$U_\lambda$。称直积群$\displaystyle \prod\limits_{\lambda\in\Lambda} G_\lambda$的子群
+$$
+\left\{ (x_\lambda)_{\lambda\in\Lambda} \in \prod\limits_{\lambda\in\Lambda} G_\lambda  \ \middle|\ \text{对几乎所有$\lambda \in \Lambda \setminus S$有$x_\lambda \in U_\lambda$} \right\}
+$$
+为$(G_\lambda)_{\lambda\in\Lambda}$关于$(U_\lambda)_{\lambda \in \Lambda \setminus S }$的限制直积。
+\end{definition}
+
+我们对限制直积给出如下拓扑。对于包含$S$的$\Lambda$的有限子集$T$，考虑$\prod\limits_{\lambda\in\Lambda} G_\lambda$的子集
+$$
+G(T) = \prod\limits_{\lambda\in T} G_\lambda \times \prod\limits_{\lambda\in \Lambda \setminus T} U_\lambda.
+$$
+于是
+$$
+\prod\limits_{\lambda\in\Lambda} G_\lambda = \bigcup\limits_T G(T).
+$$
+在每个$G(T)$中引入直积拓扑，对于$\prod\limits_{\lambda\in\Lambda} G_\lambda$的子集$V$，如果对所有$T$，$V \cap
+G(T)$为$G(T)$中的开集，则定义$V$为开集。
+
+以下简记$\mathbb{A}_F$为$A$。易知$A$是$F_v$关于$\mathfrak{o}_v$的限制直积。在限制直积拓扑下，$A$是局部紧群。记$A_f$为有限阿代尔组成的环，即
+$$
+A_f = \left\{ (a_\lambda)_{\lambda\in\Lambda} \in A \ \middle|\ a_v = 1, \text{对所有的无限素点}v \right\}.
+$$
+同样地，$GL(n, A)$以显然的方式视为$GL(n, F_v)$ 关于$GL(n, \mathfrak{o}_v)$的限制直积。
