@@ -78,3 +78,62 @@ $$
 A_f = \left\{ (a_\lambda)_{\lambda\in\Lambda} \in A \ \middle|\ a_v = 1, \text{对所有的无限素点}v \right\}.
 $$
 同样地，$GL(n, A)$以显然的方式视为$GL(n, F_v)$ 关于$GL(n, \mathfrak{o}_v)$的限制直积。
+
+\begin{definition}
+设$\Sigma$为一个指标集，$(V_v)_{v\in\Sigma}$为一族线性空间。对几乎所有的$v\in\Sigma$取定一个非零的$x_v^0 \in V_v$。令$\Omega$为$\Sigma$的满足如下条件的有限子集$S$的集合：若$v\not\in S$，那么$x_v^0$有定义。我们通过包含关系给出$\Omega$的序，那么$\Omega$成为一个定向集。对$S, S'\in\Omega$，且$S \subseteq S'$，我们给出同态：
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\node[rectangle] (arrow_from) {$\displaystyle \lambda_{S,S'}: \bigotimes\limits_{v\in S} V_v$};
+\node[rectangle, right = 2cm of arrow_from] (arrow_to) {$\displaystyle \bigotimes\limits_{v\in S'} V_v$};
+\path[->] ([xshift = 0.05cm, yshift=0.12cm]arrow_from.east) edge ([xshift = -0.05cm, yshift=0.12cm]arrow_to.west);
+
+\node[rectangle, below right = 0.21cm and 0.2cm of arrow_from.south] (mapsfrom) {$x$};
+\node[rectangle, below left = 0.03cm and -1.9cm of arrow_to.south] (mapsto) {$\displaystyle x\otimes (\bigotimes\limits_{v\in S'\setminus S} x_v^0)$};
+\path[|->] ([xshift = 0.05cm]mapsfrom.east) edge ([xshift = -0.05cm, yshift=0.12cm]mapsto.west);
+\end{tikzpicture}
+\end{figure}
+于是我们得到一个正向系统，并称
+$$
+\bigotimes\limits_v V_v := \varinjlim \bigotimes\limits_{v\in S} V_v
+$$
+为这一族空间的限制张量积。
+\end{definition}
+
+假设我们有一族群$(G_v)_{v\in\Sigma}$，和这族群的子群族$(K_v)_{v\in\Sigma}$。假设对每个$v\in\Sigma$，群$G_v$有一个表示$(V_v,\rho_v)$，并且几乎所有的$v$都存在$\xi_v^0\in V_v$使得$\rho_v(k_v)\xi_v^0 = \xi_v^0$对所有的$k_v \in K_v$成立。令$G$为$G_v$关于$K_v$的限制直积，那么我们可以定义$G$的一个表示$\displaystyle \left( \bigotimes\limits_{v}V_v,  \bigotimes\limits_{v}\rho_v \right)$：
+$$
+\left(\bigotimes\limits_{v}\rho_v\right) \left( (g_v)_v \right) \left(\bigotimes\limits_{v}x_v\right) = \bigotimes\limits_{v} \rho_v(g_v)x_v.
+$$
+
+设$\omega$为$F$的一个Hecke特征，即伊代尔类群的一个特征$\omega: A^\times / F^\times \rightarrow \mathbb{C}_1$。记
+$$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$$
+为$\operatorname{GL}(n, A)$上关于其Haar测度\cite{ramakrishnan2005fourier}可测的并且满足如下条件的函数$\phi$组成的线性空间：
+\begin{gather}
+\phi \left( \begin{pmatrix} z & & \\ & \vdots & \\ & & z \end{pmatrix} g \right) = \omega(z)\phi(g), \quad z\in A^\times, \\[1em]
+\phi(\gamma g) = \phi(g), \quad \gamma \in \operatorname{GL}(n,F), \\[1em]
+\int\limits_{Z(A)\operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A)} \lvert \phi(g) \rvert^2 dg < \infty \notag
+\end{gather}
+这里，$Z(A)$指的是$\operatorname{GL}(n, A)$的中心。$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$是一个希尔伯特空间。进一步还满足尖点性：对所有的$1 \leqslant r,s \leqslant n-1$，且$r+s=n$，几乎处处成立
+\begin{equation}
+\int\limits_{\operatorname{Mat}_{r\times s}(F) \backslash \operatorname{Mat}_{r\times s}(A)} \phi \left( \begin{pmatrix} I_r & X \\ & I_s \end{pmatrix} g \right) dX = 0
+\end{equation}
+的$\phi$组成$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$的一个闭子空间，我们记为
+$$L^2_0\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right).$$
+这里$\operatorname{Mat}_{r\times s}$表示$r\times s$矩阵组成的代数群。
+
+我们可以给出$\operatorname{GL}(n,A)$在$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$上的一个作用$\rho$，即给出表示$\left( L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right), \rho \right)$。$\rho$的定义如下
+$$
+(\rho(g)\phi)(x) = \phi(xg), \quad g,x \in \operatorname{GL}(n,A),
+$$
+即每个$g\in \operatorname{GL}(n,A)$对$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$的元素的作用是右平移。这个表示称为右正则表示。$L^2_0\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$在这个作用下是一个不变子空间，因此我们得到$\operatorname{GL}(n,A)$的一个子表示。空间$L^2_0\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$具有比较好的性质，我们有如下的定理
+
+\begin{theorem}
+$L^2_0\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$可以分解为一些不可约的希尔伯特的不变子
+空间的直和。
+\end{theorem}
+
+下面我们给出$\operatorname{GL}(n,F)$上自守形式的定义。我们先给定$\operatorname{GL}(n, A)$的一个紧子群$K$：
+$$
+K = \prod\limits_v K_v, \quad K_v = \begin{cases} O(n), & \text{如果$v$是一个实素点；} \\ U(n), & \text{如果$v$是一个复素点；} \\ \operatorname{GL}(n,\mathfrak{o}_v), & \text{如果$v$是一个有限素点。} \end{cases}
+$$
+可以证明，$K$是$\operatorname{GL}(n, A)$的一个极大紧子群，并且$\operatorname{GL}(n, A)$的每个极大紧子群都与$K$共轭。
