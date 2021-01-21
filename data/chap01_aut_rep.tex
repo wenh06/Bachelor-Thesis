@@ -109,12 +109,15 @@ $$
 $$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$$
 为$\operatorname{GL}(n, A)$上关于其Haar测度\cite{ramakrishnan2005fourier}可测的并且满足如下条件的函数$\phi$组成的线性空间：
 \begin{gather}
+\label{eq:lin_sp1}
 \phi \left( \begin{pmatrix} z & & \\ & \vdots & \\ & & z \end{pmatrix} g \right) = \omega(z)\phi(g), \quad z\in A^\times, \\[1em]
+\label{eq:lin_sp2}
 \phi(\gamma g) = \phi(g), \quad \gamma \in \operatorname{GL}(n,F), \\[1em]
 \int\limits_{Z(A)\operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A)} \lvert \phi(g) \rvert^2 dg < \infty \notag
 \end{gather}
 这里，$Z(A)$指的是$\operatorname{GL}(n, A)$的中心。$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$是一个希尔伯特空间。进一步还满足尖点性：对所有的$1 \leqslant r,s \leqslant n-1$，且$r+s=n$，几乎处处成立
 \begin{equation}
+\label{eq:cusp_cond}
 \int\limits_{\operatorname{Mat}_{r\times s}(F) \backslash \operatorname{Mat}_{r\times s}(A)} \phi \left( \begin{pmatrix} I_r & X \\ & I_s \end{pmatrix} g \right) dX = 0
 \end{equation}
 的$\phi$组成$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \right)$的一个闭子空间，我们记为
@@ -137,3 +140,24 @@ $$
 K = \prod\limits_v K_v, \quad K_v = \begin{cases} O(n), & \text{如果$v$是一个实素点；} \\ U(n), & \text{如果$v$是一个复素点；} \\ \operatorname{GL}(n,\mathfrak{o}_v), & \text{如果$v$是一个有限素点。} \end{cases}
 $$
 可以证明，$K$是$\operatorname{GL}(n, A)$的一个极大紧子群，并且$\operatorname{GL}(n, A)$的每个极大紧子群都与$K$共轭。
+
+\begin{definition}
+我们称$\operatorname{GL}(n, A)$上的函数$\phi$为一个自守形式，如果它满足式\eqref{eq:lin_sp1}和式\eqref{eq:lin_sp2}，并且$\phi$还是光滑的，$K$-有限的，$\mathcal{Z}$-有限的，缓慢增长的（of moderate growth）。这里的$\omega$是一个拟特征，被称为自守形式$\phi$的中心拟特征。
+\end{definition}
+现在来解释后面的几个条件。若$F$是一个函数域，$\phi$是光滑的指的是$\phi$是局部常值的；若$F$为数域，如果对任意的$g\in\operatorname{GL}(n,A)$，存在$g$的一个邻域$N$和$\operatorname{GL}(n,F_\infty)$上的一个光滑函数$\phi_g$，使得对任意$h \in N$，有$\phi(h) = \phi_g(h_\infty)$。这里的
+$$F_\infty = \prod\limits_{v\in S_\infty} F_v,$$
+$S_\infty$指的是$F$的无穷素点的集合。$\phi$被称为$K$-有限的，如果$K$中元素对$\phi$做右平移张
+成的是一个有限维的线性空间。$\mathcal{Z}$是$\operatorname{GL}(n,F_v)$泛包络代数（universal enveloping algebra）的中心\inlinecite{bump1998automorphic}\S 2.2。$\phi$是$\mathcal{Z}$-有限的指的是$\phi$是一个有限维的$\mathcal{Z}$不变空间的元素。$\phi$是缓慢增长的（of moderate growth）指的是对$\operatorname{GL}(n,A)$上的某个高度函数$\lVert\cdot\rVert$，存在常数$C$和$N$，使得对任意的$g\in \operatorname{GL}(n,A)$, $\phi(g) < C\lVert g \rVert^2$。关于后面的这几个条件，具体可参阅\inlinecite{bump1998automorphic} \S 3.3。我们记$\operatorname{GL}(n,A)$上带有中心拟特征$\omega$的自守形式张成的线性空间为
+$$\mathcal{A}(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$$
+进一步，若$\phi$还满足尖点性的条件\eqref{eq:cusp_cond}，那么我们称$\phi$为一个尖点形式，并且记尖点形式张成的空间为
+$$\mathcal{A}_0(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$$
+
+$\mathcal{A}(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$在$\operatorname{GL}(n, A_f)$的作用下不变，而且有$(\mathfrak{g}_\infty,  K_\infty)$-模结构。这里的
+\begin{gather*}
+    \mathfrak{g}_\infty = \prod\limits_{v\in S_\infty} \mathfrak{gl}(n, F), \\[1em]
+    K_\infty = \prod\limits_{v\in S_\infty} K_v
+\end{gather*}
+$\mathfrak{gl}(n, F)$为李代数。在这个意义下$\mathcal{A}(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$成为$\operatorname{GL}(n,A)$的一
+个``表示''。严格来说$\mathcal{A}(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$和$\mathcal{A}_0(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$并不是$\operatorname{GL}(n,A)$的表示，而是$\operatorname{GL}(n,A)$的整体Hecke代数$\mathcal{H}_{\operatorname{GL}(n,A)}$的表示，见\inlinecite{bump1998automorphic}的\S 3.4。
+
+下面，我们给出自守表示（automorphic representation） 以及自守尖点表示（automorphic cuspidal representation）的定义。
