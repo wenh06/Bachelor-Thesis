@@ -89,7 +89,7 @@ $$
 \path[->] ([xshift = 0.05cm, yshift=0.12cm]arrow_from.east) edge ([xshift = -0.05cm, yshift=0.12cm]arrow_to.west);
 
 \node[rectangle, below right = 0.21cm and 0.2cm of arrow_from.south] (mapsfrom) {$x$};
-\node[rectangle, below left = 0.03cm and -1.9cm of arrow_to.south] (mapsto) {$\displaystyle x\otimes (\bigotimes\limits_{v\in S'\setminus S} x_v^0)$};
+\node[rectangle, below left = -0.08cm and -1.9cm of arrow_to.south] (mapsto) {$\displaystyle x\otimes (\bigotimes\limits_{v\in S'\setminus S} x_v^0)$};
 \path[|->] ([xshift = 0.05cm]mapsfrom.east) edge ([xshift = -0.05cm, yshift=0.12cm]mapsto.west);
 \end{tikzpicture}
 \end{figure}
@@ -110,7 +110,7 @@ $$L^2\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A), \omega \rig
 为$\operatorname{GL}(n, A)$上关于其Haar测度\cite{ramakrishnan2005fourier}可测的并且满足如下条件的函数$\phi$组成的线性空间：
 \begin{gather}
 \label{eq:lin_sp1}
-\phi \left( \begin{pmatrix} z & & \\ & \vdots & \\ & & z \end{pmatrix} g \right) = \omega(z)\phi(g), \quad z\in A^\times, \\[1em]
+\phi \left( \begin{pmatrix} z & & \\ & \ddots & \\ & & z \end{pmatrix} g \right) = \omega(z)\phi(g), \quad z\in A^\times, \\[1em]
 \label{eq:lin_sp2}
 \phi(\gamma g) = \phi(g), \quad \gamma \in \operatorname{GL}(n,F), \\[1em]
 \int\limits_{Z(A)\operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A)} \lvert \phi(g) \rvert^2 dg < \infty \notag
@@ -161,3 +161,37 @@ $\mathfrak{gl}(n, F)$为李代数。在这个意义下$\mathcal{A}(\operatorname
 个``表示''。严格来说$\mathcal{A}(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$和$\mathcal{A}_0(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$并不是$\operatorname{GL}(n,A)$的表示，而是$\operatorname{GL}(n,A)$的整体Hecke代数$\mathcal{H}_{\operatorname{GL}(n,A)}$的表示，见\inlinecite{bump1998automorphic}的\S 3.4。
 
 下面，我们给出自守表示（automorphic representation） 以及自守尖点表示（automorphic cuspidal representation）的定义。
+
+\begin{definition}[自守表示]
+我们称$\operatorname{GL}(n,A)$的一个不可约表示为自守表示，如果他同构于$\mathcal{A}(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$的某个子表示的商。
+\end{definition}
+
+\begin{definition}[自守尖点表示]
+我们称$\operatorname{GL}(n,A)$的一个不可约表示为自守表示，如果他同构于$\mathcal{A}_0(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$的某个子表示的商。
+\end{definition}
+
+\section{主要的定理}
+
+现在我们给出本章的主要定理。首先我们给出一些引理和定义。
+
+\begin{lemma}
+设$(\rho, V)$为$K$的一个有限维不可约表示，那么存在$K_v$的一个有限维表示$(\rho_v, V_v)$，使得对几乎所有的$v$，$(\rho_v, V_v)$是$K_v$的平凡表示，而且存在$\xi_v^0\in V_v$，，使得$(\rho, V)$同构于$(\otimes_{v}\rho_v, \otimes_v V_v)$，其中$\otimes_v V_v$是是关于$(V_v,\xi_v^0)_v$的限制张量积。
+\end{lemma}
+这个引理说的是$K$的有限维不可约表示总可以写成每个局部的有限维不可约表示的限制张量积。
+
+\begin{proof}
+由于
+$$K_f := \prod\limits_{v \not \in S_\infty}$$
+是完全不连通的，可以证明对满足引理条件的表示$\rho$，$\ker \rho$包含K的一个开子群，因此包含几乎所有的$K_v$。令$S$为包含$S_\infty$的一个有限集合，使得对所有的$v \not \in S$，有$\rho(K_v)=1$，即$\rho$在这些$K_v$上是平凡的。于是
+$$K / [ \prod\limits_{v \not\in S} K_v ] \cong \prod\limits_{v \in S} K_v $$
+对$V$有作用，并且这个表示也是不可约的。
+
+$\prod\limits_{v \in S} K_v$是一个紧群的有限直积， 而他所有的不可约表示都可以分解成$\otimes_{v\in S}\rho_v$，$\rho_v$是$K_v$的不可约表示。对$v\not\in S$，我们取$(\rho_v, V_v)$为$K_v$的平凡表示。这样，$\rho$就与$\otimes_{v\in S}\rho_v$同构了。引理中的$\xi_v^0$可取为$V_v$任何一个元，$v \not\in S$。
+\end{proof}
+
+\begin{definition}
+设$(\pi, V)$为$K$的一个表示，设$(\rho, V_\rho)$为$K$的一个有限维不可约表示。令$V(\rho)$为$V$的所有同构于$V_\rho$的子表示的和。我们称$V(\rho)$为表示$(\pi, V)$的$\rho$-同型（$\rho$-
+isotypic）部分。
+\end{definition}
+
+设$V$为一个复线性空间，同时是
