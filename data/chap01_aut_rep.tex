@@ -194,4 +194,41 @@ $\prod\limits_{v \in S} K_v$是一个紧群的有限直积， 而他所有的不
 isotypic）部分。
 \end{definition}
 
-设$V$为一个复线性空间，同时是
+设$V$为一个复线性空间，同时是$(\mathfrak{g}_\infty, K_\infty)$-模和$\operatorname{GL}(n,A_f)$-模，这样$V$可视为$\operatorname{GL}(n,A)$的一个表示。设$(\mathfrak{g}_\infty, K_\infty)$和$\operatorname{GL}(n,A_f)$对$V$的作用是可交换的，我们把这两个作用都记为$\pi$，即$\operatorname{GL}(n,A)$的一个表示$(\pi, V)$。由于$K = K_\infty\cdot K_f$，因此$K$在$V$上
+也有一个作用，这个作用也记为$\pi$。
+
+\begin{definition}[Admissible representation]
+满足上述条件的线性空间$V$称为即$\operatorname{GL}(n,A)$的一个容许的表示（admissible representation），如果$V$中的向量都是$K$-有限的，而且当$\rho$为K的任一有限维不可约表示时，$V$的$\rho$-同型（$\pi$-isotypic）部分$V(\rho)$是有限维的。
+\end{definition}
+
+同样地，我们也可以对每个$F_v$定义容许表示：
+
+\begin{definition}\ 
+\begin{itemize}
+\item[(1)] 若$v$是一个有限素点，那么我们称$\operatorname{GL}(n,F_v)$的表示$(\pi, V)$为容许的，如果$V$的每个向量都有一个开的稳定子群，并且对$K_v = GL(n, \mathfrak{o}_v)$的每个有限维不可约表示$(\rho, V_\rho)$，$V$的$\rho$-同型（$\rho$-isotypic）部分$V(\rho)$是有限维的。
+\item[(2)] 若$v$是一个无限素点，那么我们称$\operatorname{GL}(n,F_v)$的表示$(\pi, V)$为容许的，如果对$K_v = GL(n, \mathfrak{o}_v)$的每个有限维不可约表示$(\rho, V_\rho)$，$V$的$\rho$-同型（$\rho$-isotypic）部分$V(\rho)$是有限维的。
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Tensor product theorem\inlinecite{bump1998automorphic}, Flath]
+\label{thm:tensor}
+设$(\pi, V_\pi)$为$\operatorname{GL}(n,A)$的一个容许的不可约表示。那么对F的每个无限素点$v$， 存在一个容许的不可约的$(\mathfrak{g}_\infty, K_\infty)$-模$(\pi_v,V_v)$，对$F$的每个有限素点$v$，存在$\operatorname{GL}(n,F_v)$一个容许的不可约表示$(\pi_v,V_v)$，使得对几乎所有素点$v$，$V_v$包含一个非零的$K_v$不动向量$\xi_v^0$，使得$\pi$是$\pi_v$的限制张量积。
+\end{theorem}
+
+有了这个定理，对每个容许不可约表示$\pi$，我们总可以写$\pi = \otimes \pi_v$。这样的表示总是可以先从局部考虑问题，然后提升到整体。
+
+\begin{theorem}
+设$(\pi, V_\pi)$为$L^2_0\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A),\omega\right)$的一个不可约成分， 那么$\pi$导出$\operatorname{GL}(n,A)$在由$V$中的$K$-有限的向量组成的线性空间上的一个容许的不可约表示。
+\end{theorem}
+
+这个定理说明，$L^2_0\left( \operatorname{GL}(n,F)\backslash \operatorname{GL}(n,A),\omega\right)$的一个不可约成分总可以导出一个自守尖点表示。
+
+\begin{theorem}[Multiplicity one theorem\inlinecite{bump1998automorphic}, Jacquet-Lang]
+\label{thm:mul_one}
+令$(\pi, V)$和$(\pi', V')$是$\mathcal{A}_0(\operatorname{GL}(n,F) \backslash \operatorname{GL}(n,A), \omega)$的两个容许的不可约子表示。
+假设对所有的无限素点和几乎所有的有限素点$v$有$\pi_v \cong \pi_v'$，那么$V = V'$。
+\end{theorem}
+
+事实上，这个定理中对无限素点$v$，$\pi_v \cong \pi_v'$的条件不是必须的。这个定理表明，那些性质比较好的$\operatorname{GL}(n,A)$的自守尖点表示完全由局部决定。
+
+关于定理\ref{thm:tensor}和定理\ref{thm:mul_one}这两个定理的证明，参见\inlinecite{bump1998automorphic}的\S3.4和\S3.5。
