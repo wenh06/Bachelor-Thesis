@@ -15,3 +15,60 @@ $$
 D(n,F) = \left\{ \begin{pmatrix} \ast & & 0 \\ & \ddots & \\ 0 & & \ast\end{pmatrix} \right\}
 $$
 这是一个代数群，是$\operatorname{Mat}_{n\times n}$的子群。
+
+\begin{definition}
+设$G$为一个代数群，如果$G$与$D(n, F)$的一个子群同构，则称$G$是可对角化的。
+\end{definition}
+
+\begin{definition}
+如果$G$是连通的的可对角化代数群，则称$G$是一个环面（torus）。
+\end{definition}
+
+\begin{definition}
+一个仿射代数群$G$被称为是简约的（reductive），如果$G$没有非平凡的正规幂幺子群。$G$被称为半单（semisimple）的如果$G$是简约代数群，而且没有非平凡的正规环面。
+\end{definition}
+若$G$是一个简约代数群，我们定义$G$的一个Borel子群为$G$的一个极大的连通可解子群。例如
+$$
+T(n,F) = \left\{ \begin{pmatrix} \ast & \cdots & \ast \\ & \ddots & \vdots \\ 0 & & \ast \end{pmatrix} \right\}
+$$
+$n$阶上三角阵，就是域$F$上代数群$\operatorname{GL}(n)$的一个Borel子群。可以证明，$G$的所有Borel子群是共轭的。
+
+\begin{definition}
+设$T$为域$F$上的一个环面，称$T$在$F$上是分裂的（split），如果$T$同构于$n$个$\mathbb{G}_m$的直积。
+\end{definition}
+这里的$n$为某个正整数，$\mathbb{G}_m$为域$F$上的乘法群。
+
+\begin{definition}
+设$G$为域$F$上的一个简约代数群，称$G$是分裂的（split），如果$G$有一个在$F$上分裂的极大环面。
+\end{definition}
+
+设$F$为一个局部域或者整体域，$G$为$F$上的一个简约代数群。那么一个连通的$L$-群$\prescript{L}{}{G}^0$指的是一个典范地与$F$相关的复的李群。下表给出了一些例子
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.17\textwidth}p{0.17\textwidth}}
+\toprule
+$G$  & $\prescript{L}{}{G}^0$ \\
+\midrule
+$\operatorname{GL}(n)$ & $\operatorname{GL}(n, \mathbb{C})$ \\
+$\operatorname{SL}(n)$ & $\operatorname{SL}(n, \mathbb{C})$ \\
+$\operatorname{PGL}(n)$ & $\operatorname{PGL}(n, \mathbb{C})$ \\
+$\operatorname{Sp}(2n)$ & $\operatorname{SO}(2n+1, \mathbb{C})$ \\
+$\operatorname{SO}(2n+1)$ & $\operatorname{Sp}(2n, \mathbb{C})$ \\
+$\operatorname{SO}(2n)$ & $\operatorname{SO}(2n, \mathbb{C})$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+我们举一个例子，来说明这种对应。
+
+\begin{example}
+设$F$是一个非阿局部域（即不是实数域或复数域），记$\mathfrak{o}$为其整数环，$v$为其赋值。$ \varpi$为$\mathfrak{o}$的唯一的极大理想的生成元。设$G$为$F$上的一个简约代数群,并且在$F$上分裂。
+\end{example}
+
+
+
+
+\section{Langlands猜想}
+
+现在，我们来叙述Langlands纲领的主要内容。
