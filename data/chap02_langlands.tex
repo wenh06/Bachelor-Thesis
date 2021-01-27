@@ -1,5 +1,6 @@
 \chapter{Langlands猜想}
 \label{chap:langlands}
+% finished, NOT checked,
 
 \section{$L$-群}
 \label{sec:l_gp}
@@ -63,12 +64,120 @@ $\operatorname{SO}(2n)$ & $\operatorname{SO}(2n, \mathbb{C})$ \\
 我们举一个例子，来说明这种对应。
 
 \begin{example}
-设$F$是一个非阿局部域（即不是实数域或复数域），记$\mathfrak{o}$为其整数环，$v$为其赋值。$ \varpi$为$\mathfrak{o}$的唯一的极大理想的生成元。设$G$为$F$上的一个简约代数群,并且在$F$上分裂。
+设$F$是一个非阿局部域（即不是实数域或复数域），记$\mathfrak{o}$为其整数环，$v$为其赋值。$ \varpi$为$\mathfrak{o}$的唯一的极大理想的生成元。设$G$为$F$上的一个简约代数群,并且在$F$上分裂。设$\chi_1, \cdots , \chi_n$为$F^\times$的拟特征，取$\operatorname{GL}(n)$的Borel子群$B(F) = T(n, F)$。记$\chi$为$B(F)$的如下定义的拟特征：
+$$
+\chi \left( \begin{pmatrix} y_1 & \ast & \cdots & \ast \\ & y_1 & \cdots & \ast \\ & & \ddots & \vdots \\ & & & y_n \end{pmatrix} \right) := \chi_1(y_1) \cdots \chi_n(y_n),
+$$
+即我们给出了$B(F)$的一个一维表示。我们把这个表示诱导为$\operatorname{GL}(n, F)$上的表示，记为$\mathcal{B}(\chi_1, \cdots, \chi_n)$。我们有如下的定理
 \end{example}
 
+\begin{theorem}
+若$\chi_1, \cdots , \chi_n$是非分歧的，那么表示$\mathcal{B}(\chi_1, \cdots, \chi_n)$包含$\operatorname{GL}(n, \mathfrak{o})$不动的元素。$\mathcal{B}(\chi_1, \cdots, \chi_n)$有唯一的一个合成因子，使得这个合成因子是一个非分歧表示。$\operatorname{GL}(n, F)$的每个非分歧表示都是这种形式。
+\end{theorem}
 
+$\chi_i (1 \leqslant i \leqslant n)$非分歧指的是$\chi_i(x) = 1$，对所有的$\lvert x \rvert_v = 1$。非分歧表示指的是这个表示在$\operatorname{GL}(n, F)$的极大紧子群$\operatorname{GL}(n, \mathfrak{o})$作用下不动的元素\inlinecite{gelbart1984elementary}。一般地，设$G$为$F$上的任一简约代数群，一个容许的不可约表示被称为不可约的，如果这个表示在$G(F)$的一个特殊极大紧子群作用下有不动的元素。在\inlinecite{bump1998automorphic}中，这样的表示被称为是Spherical的。
 
+如果$\pi$是$\operatorname{GL}(n, F)$的一个非分歧的表示，根据上面这个定理，我们知道存在$F^\times$的非分歧特征$\chi_1, \cdots, \chi_n$，使得$\chi$是$\mathcal{B}(\chi_1, \cdots, \chi_n)$的一个合成因子。那么我们可以用
+$$
+\begin{pmatrix}
+\chi_1(\varpi) & & \\
+& \ddots & \\
+& & \chi_n(\varpi)
+\end{pmatrix} \in \prescript{L}{}{G}^0 = \operatorname{GL}(n, \mathbb{C})
+$$
+来参数化$\pi$由同构关系定义的等价类。
+
+关于$L$-群的构造，参阅\inlinecite{bump1998automorphic}，在\inlinecite{alg_gp}中也有提及， 更严格更详细构造在Borel的\inlinecite{borel1979automorphic}。总之，我们可以得到以下的一些结论\inlinecite{gelbart1984elementary}：
+
+设$G$为$F$上的一个简约代数群。取定$F$的一个足够大的有限Galois扩张$\Omega$，特别地，$G$在$\Omega$上分裂。我们可以定义一个复的简约李群$\prescript{L}{}{G}^0$，并给出$\operatorname{Gal}(\Omega/F)$在$\prescript{L}{}{G}^0$上的一个作用，使得半直积
+$$
+\prescript{L}{}{G} = \prescript{L}{}{G}^0 \rtimes \operatorname{Gal}(\Omega/F)
+$$
+满足如下条件：
+\begin{itemize}
+\item[(i)] 如果$G$在$F$上是分裂的，那么$\prescript{L}{}{G}$是$\prescript{L}{}{G}^0$和$\operatorname{Gal}(\Omega/F)$的直积，$\operatorname{Gal}(\Omega/F)$在$\prescript{L}{}{G}^0$上的作用是平凡的。
+\item[(ii)] 一般地，如果$F$的素点$v$在
+中非分歧，记$\operatorname{Frob}_v$为$v$对某个在他之上的素点的Frobenius自同构。$G(F_v)$的非分歧表示$\pi_v$和$\prescript{L}{}{G}$的半单共轭类$t(\pi_v)$有一个一一对应，并且$t(\pi_v)$在$\operatorname{Gal}(\Omega/F)$上的投影就是$\operatorname{Frob}_v$所在的共轭类。
+\end{itemize}
+
+我们把这个群$\prescript{L}{}{G}$称作是$G$的$L$-群。Frobenius自同构的定义见\inlinecite{nt1}或者\inlinecite{bump1998automorphic}。设$r : \prescript{L}{}{G} \rightarrow \operatorname{GL}_d(\mathbb{C})$为一个群同态，使得$r$在$\prescript{L}{}{G}^0$上的限制是复解析的，那么我们
+称$r$为$\prescript{L}{}{G}$的一个表示。我们称一个连续的群同态$\rho: \prescript{L}{}{G} \rightarrow \prescript{L}{}{G}'$为一个$L$-同态，如果$\rho$与两个$L$-群分别在$\operatorname{Gal}(\Omega/F)$上的投影相容，即有如下交换图：
+
+\begin{center}
+\begin{tikzcd}
+\prescript{L}{}{G} \ar[rr, "\rho"] \ar[rd] & & \prescript{L}{}{G}' \ar[ld] \\
+& \operatorname{Gal}(\Omega/F)
+\end{tikzcd}
+\end{center}
 
 \section{Langlands猜想}
 
 现在，我们来叙述Langlands纲领的主要内容。
+
+\begin{conjecture}[\inlinecite{gelbart1984elementary}]
+\label{conj:reciprocity}
+设$E$为$F$的一个有限Galois扩张，记$G = \operatorname{Gal}(E/F)$，并设$\sigma: G \rightarrow \operatorname{GL}(n, \mathbb{C})$为$G$的一个不可约表示。那么存在$\operatorname{GL}(n)$的一个自守尖点表示$\pi_\sigma$使得
+$$
+L(s, \pi_\sigma) = L(s, \sigma).
+$$
+\end{conjecture}
+
+这个猜想可以被称为“互反律”猜想。但是它的逆命题是不成立的\inlinecite{bump1998automorphic}。下面这个猜想是关于由自守表示定义的L-函数的延拓性和函数方程的。
+
+\begin{conjecture}[\inlinecite{gelbart1984elementary}]
+设$\pi = \otimes \pi_v$是$G = \operatorname{GL}(n)$的一个自守表示，$r$是$\prescript{L}{}{G}$的一个有限维表示，那么
+$$
+L(s,\pi,r) = \prod\limits_{v\not\in S_\pi} \det \left[ I - r(t(\pi_v))Nv^{-s} \right]^{-1}
+$$
+可以亚纯地延拓到整个复平面$\mathbb{C}$，并且有$L(s, \pi, r) \leftrightarrow L(1 − s, \widetilde{\pi}, r)$的函数方程。
+\end{conjecture}
+
+这里的$S_\pi$为$F$的使得$\pi_v$非分歧的素点$v$的集合,而$\widetilde{\pi}$指的是$\pi$的反轭表示。关于
+反轭表示，见\inlinecite{gp_rep}第一章3.2。
+
+\begin{conjecture}[函子性猜想\inlinecite{gelbart1984elementary}]
+\label{conj:functor}
+设$G,G'$为简约代数群，$\rho: \prescript{L}{}{G} \rightarrow \prescript{L}{}{G}'$是一个$L$-同态。那么对于$G$的每个自守表示$\pi = \otimes \pi_v$，存在$G'$的一个自守表示$\pi' = \otimes \pi_v'$，使得对所有的非分歧的$v$，$t(\pi_v')$是$\prescript{L}{}{G}'$包含$t(\pi_v')$的共轭类。并且对$\prescript{L}{}{G}'$的任意有限维表示$r'$有
+$$
+L(s, \pi', r') = L(s, \pi, r'\circ\rho).
+$$
+\end{conjecture}
+
+\section{一些简单的例子}
+\label{sec:eg}
+最后，我们举几个简单的例子，看看Langlands纲领如何导出一些经典的结果。
+
+\begin{example}
+当$n = 1$，$E/F$是一个Abel扩张时，记$G = \operatorname{Gal}(E/F)$，$\sigma: G \rightarrow \mathbb{C}^\times$是$G$的一个特征，猜想\ref{conj:reciprocity}很直接地即是下面的定理
+\end{example}
+
+\begin{theorem}[Artin]
+设$E/F$为一个Abel扩张，$\sigma: G \rightarrow \mathbb{C}^\times$是$G$的一个特征，那么存在$E$的Hecke特征$\chi$，使得
+$$
+L_{E/F}(s, \sigma) = L(s, \chi).
+$$
+\end{theorem}
+
+这里的$L_{E/F}(s, \sigma)$为Artin $L$-函数，$L(s, \chi)$为Hecke $L$-函数，定义见\inlinecite{gelbart1984elementary}或\inlinecite{bump1998automorphic}。
+
+猜想2.2退化为下面的定理
+
+\begin{theorem}[Artin-Brauer]
+$L(s, \chi)$可以亚纯地延拓至整个复平面$\mathbb{C}$，并且有函数方程
+$$
+L(s, \sigma) = \varepsilon(s, \sigma) L(1-s, \widetilde{\sigma}).
+$$
+\end{theorem}
+
+\begin{example}
+设$E/F$为数域的Galois扩张，$\pi$是$\operatorname{GL}(n)$在$F$上的一个自守表示，那么根据函子性猜想\ref{conj:functor}，应该存在定义在$E$上的代数群$\operatorname{GL}(n)$的一个表示$\pi'$，典范地与$\pi$相关，被称为基变换提升（base change lift）。这是因为，我们可以分别取$G,G'$为定义在$F$以及$E$上的代数群$\operatorname{GL}(n)$，那么
+\begin{gather*}
+\prescript{L}{}{G} = \operatorname{GL}(n, \mathbb{C}) \times \operatorname{Gal}(\Omega/F), \\
+\prescript{L}{}{G}' = \operatorname{GL}(n, \mathbb{C}) \times \operatorname{Gal}(\Omega/E).
+\end{gather*}
+那么典范的映射
+$$
+\rho: (\operatorname{GL}(n, \mathbb{C}) \times \operatorname{Gal}(\Omega/F) = ) \prescript{L}{}{G} \rightarrow \prescript{L}{}{G}' ( = \operatorname{GL}(n, \mathbb{C}) \times \operatorname{Gal}(\Omega/E))
+$$
+是一个$L$-同态，因此这样的$\pi'$应该是存在的。对$E/F$为循环扩张的情况，这样的提升的存在性已经得到证明\cite{bump1998automorphic}。
+\end{example}
