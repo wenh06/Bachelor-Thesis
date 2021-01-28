@@ -27,3 +27,9 @@ dist
 *.fls
 thuthesis.ins
 /build
+
+*.ttf
+*.ttc
+fonts
+
+.vscode
