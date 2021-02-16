@@ -1,0 +1,210 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{Langlands 猜想}
+\label{cha:china}
+
+\section{$L$-群}
+  我们先依照\onlinecite{dai}，\onlinecite{bump}给出仿射代数群更多的概念。
+
+  设$G$为域$F$上的一个代数群，那么$G$有唯一一个极大不可约子集包含单位元，记为$G^0$。
+  \begin{definition}
+  如果$G = G^0$，则称$G$是连通的。
+  \end{definition}
+  记$n$阶对角阵全体为
+  $$D(n,F) = \left\{\left(
+  \begin{array}{lll}
+  \ast & & 0 \\
+  & \ddots & \\
+  0 & & \ast
+  \end{array}
+  \right)\right\}$$
+  这是一个代数群，是$Mat_{n\times n}$的子群。
+  \begin{definition}
+  设$G$为一个代数群，如果$G$与$D(n,F)$的一个子群同构，则称$G$是可对角化的。
+  \end{definition}
+  \begin{definition}
+  如果$G$是连通的的可对角化代数群，则称$G$是一个环面（torus）。
+  \end{definition}
+  \begin{definition}
+  一个仿射代数群$G$被称为是简约的（reductive），如果$G$没有非平凡的正规幂幺子群。
+  $G$被称为半单（semisimple）的如果$G$是简约代数群，而且没有非平凡的正规环面。
+  \end{definition}
+  若$G$是一个简约代数群，我们定义$G$的一个Borel子群为$G$的一个极大的连通可解子群。例如
+  $$T(n,F) = \left\{\left(
+  \begin{array}{lll}
+  \ast & \cdots & \ast \\
+  & \ddots & \vdots \\
+  0 & & \ast
+  \end{array}
+  \right)\right\}$$
+  $n$阶上三角阵，就是域$F$上代数群$GL(n)$的一个Borel子群。可以证明，$G$的所有Borel子群是共轭的。
+
+  \begin{definition}
+  设$T$为域$F$上的一个环面，称$T$在$F$上是分裂的（split），如果$T$同构于$n$个$\mathbb{G}_m$的直积。
+  \end{definition}
+  这里的$n$为某个正整数，$\mathbb{G}_m$为域$F$上的乘法群。
+
+  \begin{definition}
+  设$G$为域$F$上的一个简约代数群，称$G$是分裂的（split），如果$G$有一个在$F$上分裂的极大环面。
+  \end{definition}
+
+  设$F$为一个局部域或者整体域，$G$为$F$上的一个简约代数群。
+  那么一个连通的$L$-群$^LG^0$指的是一个典范地与$F$相关的复的李群。下表给出了一些例子
+
+  \begin{table}[htb]
+  \begin{tabular*}{\linewidth}{lp{5cm}}
+  \toprule[1.5pt]
+  {$G$} & {$^LG^0$} \\\midrule[1pt]
+  $GL(n)$ & $GL(n,\mathbb{C})$ \\
+  $SL(n)$ & $PGL(n,\mathbb{C})$ \\
+  $PGL(n)$ & $SL(n,\mathbb{C})$ \\
+  $Sp(2n)$ & $SO(2n+1,\mathbb{C})$ \\
+  $SO(2n+1)$ & $Sp(2n,\mathbb{C})$ \\
+  $SO(2n)$ & $SO(2n,\mathbb{C})$ \\
+  \bottomrule[1.5pt]
+  \end{tabular*}
+  \end{table}
+
+  我们举一个例子，来说明这种对应。
+
+  \begin{example}
+  设$F$是一个非阿局部域（即不是实数域或复数域），记$\mathfrak{o}$为其整数环，$\upsilon$为其赋值。
+  $\varpi$为$\mathfrak{o}$的唯一的极大理想的生成元。设$G$为$F$上的一个简约代数群,并且在$F$上分裂。
+  设$\chi_1,\cdots,\chi_n$为$F^{\times}$的拟特征，取$GL(n)$的Borel子群$B(F)=
+  T(n,F)$。记$\chi$为$B(F)$的如下定义的拟特征：
+  $$\chi\left(
+  \begin{array}{llll}
+  y_1 & \ast & \cdots & \ast \\
+  & y_2 &\cdots & \ast       \\
+  & & \ddots & \vdots        \\
+  & & & y_n
+  \end{array}\right)
+  := \chi_1(y_1)\cdots \chi_n(y_n)，$$
+  即我们给出了$B(F)$的一个一维表示。我们把这个表示诱导为$GL(n,F)$上的表示，记为$\mathcal
+  {B}(\chi_1,\cdots,\chi_n)$。我们有如下的定理
+
+  \begin{theorem}
+  若$\chi_1,\cdots,\chi_n$是非分歧的，那么表示$\mathcal
+  {B}(\chi_1,\cdots,\chi_n)$包含$GL(n, \mathfrak{o})$不动的元素。$\mathcal
+  {B}(\chi_1,\cdots,\chi_n)$有唯一的一个合成因子，使得这个合成因子是一个非分歧表示。
+  $GL(n,F)$的每个非分歧表示都是这种形式。
+  \end{theorem}
+
+  $\chi_i(1\leqslant i\leqslant n)$非分歧指的是$\chi_i(x) = 1$，对所有的$|x|_{\upsilon} =
+  1$。非分歧表示指的是这个表示在$GL(n,F)$的极大紧子群$GL(n,\mathfrak{o})$作用下有不动的元素\onlinecite{gelbart}。
+  一般地，设$G$为$F$上的任一简约代数群，一个容许的不可约表示被称为不可约的，
+  如果这个表示在$G(F)$的一个特殊极大紧子群作用下有不动的元素。
+  在\onlinecite{bump}中，这样的表示被称为是Spherical的。
+
+  如果$\pi$是$GL(n,F)$的一个非分歧的表示，根据上面这个定理，
+  我们知道存在$F^{\times}$的非分歧特征$\chi_1,\cdots,\chi_n$，
+  使得$\pi$是$\mathcal {B}(\chi_1,\cdots,\chi_n)$的一个合成因子。那么我们可以用
+  \begin{equation}
+  \label{eq1}
+  \left(\begin{array}{lll}
+  \chi_1(\varpi) & & \\
+  & \ddots & \\
+  & & \chi_n(\varpi)
+  \end{array}\right)\in\ ^LG^0 = GL(n,\mathbb{C})
+  \end{equation}
+  来参数化$\pi$由同构关系定义的等价类。
+  \end{example}
+
+  关于$L$-群的构造，参阅\onlinecite{bump}，在\onlinecite{dai}中也有提及，
+  更严格更详细构造在Borel的\onlinecite{borel}。总之，我们可以得到以下的一些结论\onlinecite{gelbart}：
+
+  设$G$为$F$上的一个简约代数群。取定$F$的一个足够大的有限Galois扩张$\Omega$，特别地，$G$在$\Omega$上分裂。
+  我们可以定义一个复的简约李群$^LG^0$，并给出$Gal(\Omega/F)$在$^LG^0$上的一个作用，使得半直积
+  $$^LG = \ ^LG^0\rJoin Gal(\Omega/F)$$
+  满足如下条件：
+  \begin{enumerate}
+  \item[(i)]如果$G$在$F$上是分裂的，那么$^LG$是$^LG^0$和$Gal(\Omega/F)$的直积，$Gal(\Omega/F)$在$^LG^0$上的作用是平凡的。
+  \item[(ii)]一般地，如果$F$的素点$\upsilon$在$\Omega$中非分歧，记$Frob_{\upsilon}$为$\upsilon$对某个在他之上的素点的Frobenius自同构。
+  $G(F_{\upsilon})$的非分歧表示$\pi_{\upsilon}$和$^LG$的半单共轭类$t(\pi_{\upsilon})$有一个一一对应，
+  并且$t(\pi_{\upsilon})$在$Gal(\Omega/F)$上的投影就是$Frob_{\upsilon}$所在的共轭类。
+  \end{enumerate}
+
+  我们把这个群$^LG$称作是$G$的$L$-群。Frobenius自同构的定义见\onlinecite{shu}或者\onlinecite{bump}。设$r:\ ^LG\rightarrow
+  GL_d(\mathbb{C})$为一个群同态，使得$r$在$^LG^0$上的限制是复解析的，那么我们称$r$为$^LG$的一个表示。
+  我们称一个连续的群同态$\rho:\ ^LG\rightarrow \
+  ^LG^{\prime}$为一个$L$-同态，如果$\rho$与两个$L$-群分别在$Gal(\Omega/F)$上的投影相容，即有如下交换图：
+  \[ \xymatrix{
+  ^LG \ar[rr]^{\rho} \ar[dr] & & \ ^LG^{\prime} \ar[dl] \\
+  & Gal(\Omega/F) & }  \]
+
+\section{Langlands 猜想}
+  现在，我们来叙述Langlands纲领的主要内容。
+  \begin{conjecture}[\onlinecite{gelbart}]
+  \label{cong1}
+  设$E$为$F$的一个有限Galois扩张，记$G = Gal(E/F)$，并设$\sigma:
+  G\rightarrow
+  GL(n,\mathbb{C})$为$G$的一个不可约表示。那么存在$GL(n)$的一个自守尖点表示$\pi_{\sigma}$使得
+  $$L(s,\pi_{\sigma}) = L(s,\sigma).$$
+  \end{conjecture}
+
+  这个猜想可以被称为“互反律”猜想。这里的$L(s,\sigma)$为Artin$L$-函数，定义见\onlinecite{gelbart}或\onlinecite{bump}。
+  $$L(s,\pi_{\sigma}) = \prod\limits_{\upsilon\not\in S_{\pi}}[det(I-[A_{\upsilon}]N\upsilon^{-s})]^{-1},$$
+  这里的$[A_{\upsilon}]$是由式\ref{eq1}定义的半单共轭类，$S_{\pi}$为$F$的使得$\pi_{\upsilon}$非分歧的素点$\upsilon$的集合。
+  但是它的逆命题是不成立的\onlinecite{bump}。
+  下面这个猜想是关于由自守表示定义的$L$-函数的延拓性和函数方程的。
+
+  \begin{conjecture}[\onlinecite{gelbart}]
+  \label{cong2}
+  设$\pi = \otimes
+  \pi_{\upsilon}$是$G = GL(n)$的一个自守表示，$r$是$^{L}G$的一个有限维表示，那么
+  $$L(s,\pi,r) = \prod\limits_{\upsilon\not\in
+  S_{\pi}}det[I-r(t(\pi_{\upsilon}))N\upsilon^{-s}]^{-1}$$
+  可以亚纯地延拓到整个复平面$\mathbb{C}$，并且有$L(s,\pi,r)\leftrightarrow
+  L(1-s,\widetilde{\pi},r)$的函数方程。
+  \end{conjecture}
+
+  $\widetilde{\pi}$指的是$\pi$的反轭表示。关于反轭表示，见\onlinecite{feng}第一章3.2。
+
+  \begin{conjecture}[函子性猜想\onlinecite{gelbart}]
+  \label{cong3}
+  设$G,G^{\prime}$为简约代数群，$\rho: \ ^{L}G\rightarrow
+  \ ^{L}G^{\prime}$是一个$L$-同态。那么对于$G$的每个自守表示$\pi =
+  \otimes \pi_{\upsilon}$，存在$G^{\prime}$的一个自守表示$\pi^{\prime}
+  = \otimes \pi_{\upsilon}^{\prime}$，使得对所有的非分歧的$\upsilon$，
+  $t(\pi_{\upsilon}^{\prime})$是$^{L}G^{\prime}$包含$t(\pi_{\upsilon})$的共轭类。
+  并且对$^{L}G^{\prime}$的任意有限维表示$r^{\prime}$有
+  $$L(s,\pi^{\prime},r^{\prime}) = L(s,\pi,r^{\prime}\circ \rho).$$
+  \end{conjecture}
+
+\section{一些简单的例子}
+  最后，我们举几个简单的例子，看看Langlands纲领如何导出一些经典的结果。
+  \begin{example}
+  当$n = 1$，$E/F$是一个Abel扩张时，记$G = Gal(E/F)$，$\sigma:G\rightarrow
+  \mathbb{C}^{\times}$是$G$的一个特征，猜想\ref{cong1}很直接地即是下面的定理
+  \begin{theorem}[Artin]
+  设$E/F$为一个Abel扩张，$\sigma:G\rightarrow
+  \mathbb{C}^{\times}$是$G$的一个特征，那么存在$E$的Hecke特征$\chi$，使得
+  $$L_{E/F}(s, \sigma) = L(s, \chi).$$
+  \end{theorem}
+
+  这里的$L_{E/F}(s, \sigma)$为Artin$L$-函数，$L(s,
+  \chi)$为Hecke$L$-函数，定义见\onlinecite{gelbart}或\onlinecite{bump}。
+
+  猜想\ref{cong2}退化为下面的定理
+  \begin{theorem}[Artin-Brauer]
+  $L(s,\sigma)$可以亚纯地延拓至整个复平面$\mathbb{C}$，并且有函数方程
+  $$L(s,\sigma) = \epsilon(s,\sigma)L(1-s,\widetilde{\sigma}).$$
+  \end{theorem}
+  \end{example}
+
+  \begin{example}
+  设$E/F$为数域的Galois扩张,$\pi$是$GL(n)$在$F$上的一个自守表示，那么根据函子性猜想\ref{cong3}，
+  应该存在定义在$E$上的代数群$GL(n)$的一个表示$\pi^{\prime}$，典范地与$\pi$相关，被称为基变换提升（base change lift）。
+  这是因为，我们可以分别取$G,G^{\prime}$为定义在$F$以及$E$上的代数群$GL(n)$，那么
+  $$^LG=GL(n,\mathbb{C})\times Gal(\Omega/F),$$
+  $$^LG^{\prime}=GL(n,\mathbb{C})\times Gal(\Omega/E).$$
+  那么典范的映射
+  $$\rho: (GL(n,\mathbb{C})\times Gal(\Omega/F)=)\ ^LG\rightarrow \ ^LG^{\prime}(=GL(n,\mathbb{C})\times
+  Gal(\Omega/E))$$
+  是一个$L$-同态，因此这样的$\pi^{\prime}$应该是存在的。对$E/F$为循环扩张的情况，
+  这样的提升的存在性已经得到证明\onlinecite{bump}。
+  \end{example}

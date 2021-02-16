@@ -1,0 +1,340 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{自守表示}
+\label{cha:china}
+  本章主要介绍的是$GL(n)$的自守表示，因为“自守表示及其$L$-函数是Langlands纲领的核心”\onlinecite{gelbart}。
+  本章最终的目的是给出守表示（automorphic representation）
+  以及自守尖点表示（automorphic cuspidal
+  representation）的定义，以及两个大定理Tensor product
+  theorem和Multiplicity one theorem。
+\section{一些基本概念}
+  我们先来介绍一些基本概念。
+
+  设$k$为固定的代数闭域。定义$k$上的$n$维仿射空间\onlinecite{heart}
+  $$\mathbb{A}_k^n = \left\{(a_1, \cdots, a_n)\ |\ a_i\in k, 1\leqslant i\leqslant
+  n\right\},$$
+  赋予$\mathbb{A}_k^n$Zariski拓扑：取所有$\mathbb{A}_k^n$所有代数集合的补为$\mathbb{A}_k^n$的开集。
+  这里，$\mathbb{A}_k^n$的代数集合被定义为某个$n$个变量的$k$系数多项式集合的公共零点集。
+  \begin{definition}
+  $\mathbb{A}_k^n$的一个不可约闭子集$X$就称为仿射代数簇。
+  \end{definition}
+  这里不可约指的是不能分解成两个真闭子集的并。设$R$为包含$k$的一个环，我们记$X(R)$为坐标取值在$R$中的$X$的点。
+  即设$X=Z(T)$，为多项式集$T$的零点集，那么$$X(R) = \left\{(a_1, \cdots, a_n)\in R^n\ |\ \forall f\in T, f(a_1, \cdots,
+  a_n) = 0 \right\}.$$
+
+  接下来，我们给出域$k$上仿射代数群的定义。
+  \begin{definition}
+  设$G$为$k$上的一个仿射代数簇，被赋予了一个特殊点$1\in G(k)$，群的乘法$G\times G\rightarrow
+  G$由多项式给出，使得对任意的包含$k$的环$R$，$G(R)$在这个乘法下成为一个群。那么我们称$G$为域$k$上的一个仿射代数群。
+  \end{definition}
+
+  以下设$F$为一个整体域，即数域或函数域。记$\mathfrak{o}_{\upsilon}$为$F$在$\upsilon$处完备化$F_{\upsilon}$的整数环。
+  定义$F$的阿代尔环$\mathbb{A}_F$和伊代尔群$\mathbb{A}_F^{\times}$如下：
+  $$\mathbb{A}_F = \left\{(a_{\upsilon})_{\upsilon}\in \prod\limits_{\upsilon} F_{\upsilon}\
+  |\ \text{对$F$的几乎所有的有限素点$\upsilon$有} a_{\upsilon}\in
+  \mathfrak{o}_{\upsilon} \right\},$$
+  $$\mathbb{A}_F^{\times} = \left\{(a_{\upsilon})_{\upsilon}\in \prod\limits_{\upsilon} F_{\upsilon}^{\times}\
+  |\ \text{对$F$的几乎所有的有限素点$\upsilon$有} a_{\upsilon}\in
+  \mathfrak{o}_{\upsilon}^{\times} \right\}.$$
+
+  我们给出表示的相关概念。
+
+  \begin{definition}
+  设$G$为任一群，$V$为某个域$k$上的线性空间。如果存在群同态$\rho:
+  G\rightarrow  GL(V)$，其中$GL(V)$为一般线性群，那么我们称$(\rho,
+  V)$，简记称$V$或者$\rho$。
+  \end{definition}
+  一个等价的定义是$G$在$V$上有一个线性作用，则称$V$为$G$的一个表示。
+  另一个等价的定义是若$V$具有$kG$-模结构，则称$V$为$G$的一个表示。
+
+  若$U$是$V$的一个子空间，且在$G$的作用下为不变子空间，那么称$(\rho|_U, U)$为$(\rho,
+  V)$的一个子表示。考虑商空间$V/U$，对$g\in G, x+U\in
+  V/U$，定义$g(x+U) = g(x)+U$，那么我们得到$G$在$V/U$上的一个作用，称为$(\rho,
+  V)$的一个商表示，记为$(V/U, \rho_{V/U})$。群$G$的非零表示$(\rho,
+  V)$称为是不可约的，如果$(\rho, V)$没有非平凡的子表示。
+
+  设$(\rho_1, V_1)$和$(\rho_2, V_2)$是群$G$的两个表示，我们称他们是同构的，
+  如果存在单满的$k$-线性映射$f:V_1\rightarrow V_2$，使得对任一$g\in G$有下面的交换图：
+  \[ \xymatrix{
+  V_1 \ar[r]^f \ar[d]_{\rho_1 (g)} & V_2 \ar[d]^{\rho_2 (g)}  \\
+  V_1 \ar[r]^f & V_2 }  \]
+
+  关于表示的进一步知识，可以参考\onlinecite{feng}。
+
+  现在再来介绍限制直积\onlinecite{shu}和限制张量积\onlinecite{bump}的概念。
+
+  \begin{definition}
+  设$(G_{\lambda})_{\lambda\in
+  \Lambda}$为一族局部紧群，$S$为$\Lambda$的有限子集合，对于每个$\lambda\in \Lambda\setminus
+  S$给定$G_{\lambda}$的一个紧开子群$U_{\lambda}$。称直积群$\prod\limits_{\lambda\in \Lambda}
+  G_{\lambda}$的子群
+  $$\left\{(x_{\lambda})_{\lambda\in \Lambda}\in \prod\limits_{\lambda\in \Lambda} G_{\lambda}\
+  |\ \text{对几乎所有的} \lambda\in \Lambda\setminus S \text{有} x_{\lambda}\in
+  U_{\lambda} \right\}$$
+  为$(G_{\lambda})_{\lambda\in \Lambda}$关于$(U_{\lambda})_{\lambda\in \Lambda\setminus
+  S}$的限制直积。
+  \end{definition}
+
+  我们对限制直积给出如下拓扑。对于包含$S$的$\Lambda$的有限子集$T$，考虑$\prod\limits_{\lambda\in
+  \Lambda} G_{\lambda}$的子集
+  $$G(T) = \prod\limits_{\lambda\in T} G_{\lambda} \times \prod\limits_{\lambda\in \Lambda\setminus
+  T} U_{\lambda}.$$
+  于是$$\prod\limits_{\lambda\in \Lambda} G_{\lambda} =
+  \bigcup\limits_{T}G(T).$$
+  在每个$G(T)$中引入直积拓扑，对于$\prod\limits_{\lambda\in \Lambda}
+  G_{\lambda}$的子集$V$，如果对所有$T$，$V\cap
+  G(T)$为$G(T)$中的开集，则定义$V$为开集。
+
+  以下简记$\mathbb{A}_F$为$A$。易知$A$是$F_{\upsilon}$关于$\mathfrak{o}_{\upsilon}$的限制直积。
+  在限制直积拓扑下，$A$是局部紧群。记$A_f$为有限阿代尔组成的环，即
+  $$A_f = \left\{(a_{\lambda})_{\lambda\in \Lambda}\in A\ |\ a_{\upsilon}
+  = 1, \text{对所有的无限素点}\upsilon \right\}.$$
+  同样地，$GL(n,A)$以显然的方式视为$GL(n,F_{\upsilon})$
+  关于$GL(n,\mathfrak{o}_{\upsilon})$的限制直积。
+
+  \begin{definition}
+  设$\Sigma$为一个指标集，$(V_{\upsilon})_{\upsilon\in
+  \Sigma}$为一族线性空间。对几乎所有的$\upsilon \in \Sigma$取定一个非零的$x^0_{\upsilon} \in V_{\upsilon}$。
+  令$\Omega$为$\Sigma$的满足如下条件的有限子集$S$的集合：若$\upsilon\not\in S$，那么$x^0_{\upsilon}$有定义。
+  我们通过包含关系给出$\Omega$的序，那么$\Omega$成为一个定向集。对$S,S^{\prime}\in
+  \Omega$，且$S\subseteq S^{\prime}$，我们给出同态：
+  \[ \xymatrix@R=0em{
+  \lambda_{S,S^{\prime}}: \otimes_{\upsilon\in S}
+  V_{\upsilon} \ar[r] & \otimes_{\upsilon\in S^{\prime}}
+  V_{\upsilon} \\
+  \ \ \ \ \ \ \ x \ar@{|->}[r] & x\otimes(\otimes_{\upsilon\in S^{\prime}\setminus S}
+  x_{\upsilon}^0) }  \]
+  于是我们得到一个正向系统，并称
+  $$\bigotimes\limits_{\upsilon} V_{\upsilon} := \varinjlim \bigotimes\limits_{\upsilon\in
+  S} V_{\upsilon}$$
+  为这一族空间的限制张量积。
+  \end{definition}
+
+  假设我们有一族群$(G_{\upsilon})_{\upsilon\in\Sigma}$，和这族群的子群族$(K_{\upsilon})_{\upsilon\in\Sigma}$。
+  假设对每个$\upsilon\in\Sigma$，群$G_{\upsilon}$有一个表示$(V_{\upsilon},
+  \rho_{\upsilon})$，并且几乎所有的$\upsilon$都存在$\xi_{\upsilon}^0\in
+  V_{\upsilon}$使得$\rho_{\upsilon}(k_{\upsilon})\xi_{\upsilon}^0 =
+  \xi_{\upsilon}^0$对所有的$k_{\upsilon}\in
+  K_{\upsilon}$成立。令$G$为$G_{\upsilon}$关于$K_{\upsilon}$的限制直积，
+  那么我们可以定义$G$的一个表示$\left(\bigotimes\limits_{\upsilon}
+  \rho_{\upsilon}, \bigotimes\limits_{\upsilon}
+  V_{\upsilon}\right)$：
+  $$\left(\bigotimes\limits_{\upsilon} \rho_{\upsilon}\right)
+  (g_{\upsilon})_{\upsilon} \left(\bigotimes\limits_{\upsilon}
+  x_{\upsilon}\right) = \bigotimes\limits_{\upsilon}
+  \rho_{\upsilon}(g_{\upsilon})x_{\upsilon}.$$
+
+  设$\omega$为$F$的一个Hecke特征，即伊代尔类群的一个特征$\omega:A^{\times}/F^{\times}\rightarrow \mathbb{C}_1$。记
+  $$L^2(GL(n,F)\backslash GL(n,A), \omega)$$
+  为$GL(n,A)$上关于其Haar测度（\onlinecite{haar}）可测的并且满足如下条件的函数$\phi$组成的线性空间：
+  \begin{equation}
+  \label{eq1}
+  \phi\left(\left(
+  \begin{array}{lll}
+  z & & \\
+  & \ddots & \\
+  & & z \\
+  \end{array}\right)
+  g \right)
+  = \omega(z)\phi(g),\ \ \ z\in A^{\times},
+  \end{equation}
+  \begin{equation}
+  \label{eq2}
+  \phi(\gamma g) = \phi(g),\ \ \ \gamma\in GL(n,F),
+  \end{equation}
+  $$\int\limits_{Z(A)GL(n,F)\backslash GL(n,A)} |\phi(g)|^2dg <
+  \infty.$$
+  这里，$Z(A)$指的是$GL(n,A)$的中心。$L^2(GL(n,F)\backslash GL(n,A),
+  \omega)$是一个希尔伯特空间。进一步还满足尖点性：对所有的$1\leqslant
+  r,s\leqslant n-1$，且$r+s=n$，几乎处处成立
+  \begin{equation}
+  \label{eq3}
+  \int\limits_{Mat_{r\times s}(F)\backslash Mat_{r\times s}(A)}
+  \phi\left(\left(
+  \begin{array}{ll}
+  I_r & X \\
+  & I_s \\
+  \end{array}\right)
+  g \right)
+  dX = 0
+  \end{equation}
+  的$\phi$组成$L^2(GL(n,F)\backslash GL(n,A), \omega)$的一个闭子空间，我们记为
+  $$L^2_0(GL(n,F)\backslash GL(n,A), \omega).$$
+  这里$Mat_{r\times s}$表示$r\times s$矩阵组成的代数群。
+
+  我们可以给出$GL(n,A)$在$L^2(GL(n,F)\backslash GL(n,A),
+  \omega)$上的一个作用$\rho$，即给出表示$(L^2(GL(n,F)\backslash GL(n,A),
+  \omega),\rho)$。$\rho$的定义如下
+  $$(\rho(g)\phi)(x) = \phi(xg),\ \ \ g,x\in GL(n,A)$$
+  即每个$g\in GL(n,A)$对$(L^2(GL(n,F)\backslash GL(n,A),
+  \omega)$元素的作用是右平移。这个表示称为右正则表示。$L^2_0(GL(n,F)\backslash GL(n,A),
+  \omega)$在这个作用下是一个不变子空间，因此我们得到$GL(n,A)$的一个子表示。
+  空间$L^2_0(GL(n,F)\backslash GL(n,A),
+  \omega)$具有比较好的性质，我们有如下的定理
+
+  \begin{theorem}
+  \label{thm3}
+  $L_0^2(GL(n,F)\backslash
+  GL(n,A),\omega)$可以分解为一些不可约的希尔伯特的不变子空间的直和。
+  \end{theorem}
+
+  下面我们给出$GL(n,F)$上自守形式的定义。我们先给定$GL(n,A)$的一个紧子群$K$：
+  \[
+  K = \prod\limits_{\upsilon} K_{\upsilon},\ \
+  K_{\upsilon} = \left\{
+  \begin{array}{lll}
+  O(n) & \text{如果$\upsilon$是一个实素点；}\\
+  U(n) & \text{如果$\upsilon$是一个实素点；}\\
+  GL(n,\mathfrak{o}_{\upsilon}) & \text{如果$\upsilon$是一个有限素点。}
+  \end{array}
+  \right.
+  \]
+  可以证明，$K$是$GL(n,A)$的一个极大紧子群，并且$GL(n,A)$的每个极大紧子群都与$K$共轭。
+
+  \begin{definition}
+  我们称$GL(n,A)$上的函数$\phi$为一个自守形式，如果它满足式\ref{eq1}和式\ref{eq2}
+  并且$\phi$还是光滑的，$K$-有限的，$\mathcal {Z}$-有限的，缓慢增长的（of moderate
+  growth）。这里的$\omega$是一个拟特征，被称为自守形式$\phi$的中心拟特征。
+  \end{definition}
+  现在来解释后面的几个条件。若$F$是一个函数域，$\phi$是光滑的指的是$\phi$是局部常值的；若$F$为数域，如果对任意的$g\in
+  GL(n,A)$，存在$g$的一个邻域$N$和$GL(n,F_{\infty})$上的一个光滑函数$\phi_g$，使得对任意$h\in
+  N$，有$\phi(h) = \phi_g(h_{\infty})$，则称$\phi$是光环的。这里的
+  $$F_{\infty} = \prod\limits_{\upsilon\in S_{\infty}} F_{\upsilon},$$
+  $S_{\infty}$指的是$F$的无穷素点的集合。$\phi$被称为$K$-有限的，如果$k$中元素对$\phi$做右平移作用张成的是一个有限维的线性空间。
+  $\mathcal {Z}$是$GL(n,F_{\upsilon})$的泛包络代数（universal enveloping
+  algebra）的中心（\onlinecite{bump}\S 2.2）。$\phi$是$\mathcal {Z}$-有限的指的是$\phi$是一个有限维的$\mathcal
+  {Z}$不变空间的元素。$\phi$是缓慢增长的（of moderate
+  growth）指的是对$GL(n,A)$上的某个高度函数$\|\ \|$，存在常数$C$和$N$，使得对任意的$g\in
+  GL(n,A)$，$\phi(g) < C\|g\|^N$。关于后面的这几个条件，具体可参阅\onlinecite{bump}的\S
+  3.3。我们记$GL(n,A)$上带有中心拟特征$\omega$的自守形式张成的线性空间为
+  $$\mathcal {A}(GL(n,F)\backslash GL(n,A),\omega).$$
+  进一步，若$\phi$还满足尖点性的条件\ref{eq3}，那么我们称$\phi$为一个尖点形式，并且记尖点形式张成的空间为
+  $$\mathcal {A}_0(GL(n,F)\backslash GL(n,A),\omega).$$
+
+  $\mathcal {A}(GL(n,F)\backslash
+  GL(n,A),\omega)$在$GL(n,A_f)$的作用下不变，而且有$(\mathfrak{g}_{\infty},
+  K_{\infty})$-模结构。这里的
+  $$\mathfrak{g}_{\infty} = \prod\limits_{\upsilon\in S_{\infty}}
+  \mathfrak{g}\mathfrak{l}(n, F_{\upsilon}),$$
+  $$K_{\infty} = \prod\limits_{\upsilon\in S_{\infty}} K_{\upsilon},$$
+  $\mathfrak{g}\mathfrak{l}(n,
+  F_{\upsilon})$为李代数。在这个意义下，$\mathcal {A}(GL(n,F)\backslash
+  GL(n,A),\omega)$成为$GL(n,A)$的一个“表示”。严格来说$\mathcal {A}(GL(n,F)\backslash
+  GL(n,A),\omega)$和$\mathcal {A}_0(GL(n,F)\backslash
+  GL(n,A),\omega)$并不是$GL(n,A)$的表示，而是$GL(n,A)$的整体Hecke代数$\mathcal
+  {H}_{GL(n,A)}$的表示，见\onlinecite{bump}的\S 3.4。
+
+  下面，我们给出自守表示（automorphic representation）
+  以及自守尖点表示（automorphic cuspidal representation）的定义。
+
+  \begin{definition}[自守表示]
+  我们称$GL(n,A)$的一个不可约表示为自守表示，如果他同构于$\mathcal {A}(GL(n,F)\backslash
+  GL(n,A),\omega)$的某个子表示的商。
+  \end{definition}
+
+  \begin{definition}[自守尖点表示]
+  我们称$GL(n,A)$的一个不可约表示为自守表示，如果他同构于$\mathcal {A}_0(GL(n,F)\backslash
+  GL(n,A),\omega)$的某个子表示。
+  \end{definition}
+
+\section{主要的定理}
+  现在我们给出本章的主要定理。首先我们给出一些引理和定义。
+  \begin{lemma}
+  设$(\rho,
+  V)$为$K$的一个有限维不可约表示，那么存在$K_{\upsilon}$的一个有限维表示$(\rho_{\upsilon},
+  V_{\upsilon})$，使得对几乎所有的$\upsilon$，$(\rho_{\upsilon},
+  V_{\upsilon})$是$K_{\upsilon}$的平凡表示，而且存在$\xi_{\upsilon}^0\in
+  V_{\upsilon}$，使得$(\rho,V)$同构于$(\otimes_{\upsilon} \rho_{\upsilon}, \otimes_{\upsilon}
+  V_{\upsilon})$，其中$\otimes_{\upsilon} V_{\upsilon}$是关于$(V_{\upsilon},
+  \xi_{\upsilon}^0)_{\upsilon}$的限制张量积。
+  \end{lemma}
+  这个引理说的是$K$的有限维不可约表示总可以写成每个局部的有限维不可约表示的限制张量积。
+  \begin{proof}
+  由于$$K_f := \prod\limits_{\upsilon\not\in S_{\infty}} K_{\upsilon}$$是完全不连通的，
+  可以证明对满足引理条件的表示$\rho$，$\ker\rho$包含$K$的一个开子群，
+  因此包含几乎所有的$K_{\upsilon}$。令$S$为包含$S_{\infty}$的一个有限集合，使得对所有的$\upsilon\not\in
+  S$，有$\rho(K_{\upsilon}) =
+  1$，即$\rho$在这些$K_{\upsilon}$上是平凡的。于是
+  $$K/[\prod\limits_{\upsilon\not\in S} K_{\upsilon}]\cong \prod\limits_{\upsilon\in S} K_{\upsilon}$$
+  对$V$有作用，并且这个表示也是不可约的。
+
+  $\prod\limits_{\upsilon\in S} K_{\upsilon}$是一个紧群的有限直积，
+  而他所有的不可约表示都可以分解成$\otimes_{\upsilon\in S}\rho_{\upsilon}$，
+  $\rho_{\upsilon}$是$K_{\upsilon}$的不可约表示。对$\upsilon\not\in
+  S$，我们取$(\rho_{\upsilon}, V_{\upsilon})$为$K_{\upsilon}$的平凡表示。这样，$\rho$就与$\otimes_{\upsilon}
+  \rho_{\upsilon}$同构了。引理中的$\xi_{\upsilon}^0$可取为$V_{\upsilon}$任何一个元，$\upsilon\not\in
+  S$。
+  \end{proof}
+
+  \begin{definition}
+  设$(\pi, V)$为$K$的一个表示，设$(\rho,
+  V_{\rho})$为$K$的一个有限维不可约表示。令$V(\rho)$为$V$的所有同构于$V_{\rho}$的子表示的和。
+  我们称$V(\rho)$为表示$(\pi, V)$的$\rho$-同型（$\rho$-isotypic）部分。
+  \end{definition}
+
+  设$V$为一个复线性空间，同时是$(\mathfrak{g}_{\infty},
+  K_{\infty})$-模和$GL(n,A_f)$-模，这样$V$可视为$GL(n,A)$的一个表示。设$(\mathfrak{g}_{\infty},
+  K_{\infty})$和$GL(n,A_f)$对$V$的作用是可交换的，我们把这两个作用都记为$\pi$，
+  即$GL(n,A)$的一个表示$(\pi,V)$。由于$K = K_{\infty}\cdot
+  K_f$，因此$K$在$V$上也有一个作用，这个作用也记为$\pi$。
+
+  \begin{definition}[Admissible representation]
+  满足上述条件的线性空间$V$称为$GL(n,A)$的一个容许的表示（admissible
+  representation），如果$V$中的向量都是$K$-有限的，而且当$\rho$为$K$的任一有限维不可约表示时，
+  $V$的$\rho$-同型（$\rho$-isotypic）部分$V(\rho)$是有限维的。
+  \end{definition}
+
+  同样地，我们也可以对每个$F_{\upsilon}$定义容许表示：
+
+  \begin{definition}\
+  \begin{enumerate}
+  \item[(1)]
+  若$\upsilon$是一个有限素点，那么我们称$GL(n,F_{\upsilon})$的表示$(\pi,V)$为容许的，
+  如果$V$的每个向量都有一个开的稳定子群，并且对$K_{\upsilon} =
+  GL(n,\mathfrak{o}_{\upsilon})$的每个有限维不可约表示$(\rho,V_{\rho})$，$V$的$\rho$-同型（$\rho$-isotypic）部分$V(\rho)$是有限维的。
+  \item[(2)]
+  若$\upsilon$是一个无限素点，那么我们称$GL(n,F_{\upsilon})$的表示$(\pi,V)$为容许的，
+  如果对$K_{\upsilon} =  GL(n,\mathfrak{o}_{\upsilon})$的每个有限维不可约表示$(\rho,V_{\rho})$，
+  $V$的$\rho$-同型（$\rho$-isotypic）部分$V(\rho)$是有限维的。
+  \end{enumerate}
+  \end{definition}
+
+  \begin{theorem}[Tensor product theorem\onlinecite{bump}, Flath]
+  \label{thm1}
+  设$(V,\pi)$为$GL(n,A)$的一个容许的不可约表示。那么对$F$的每个无限素点$\upsilon$，
+  存在一个容许的不可约的$(\mathfrak{g_{\infty}},
+  K_{\upsilon})$-模$(V_{\upsilon},\pi_{\upsilon})$，对$F$的每个有限素点$\upsilon$，
+  存在$GL(n,F_{\upsilon})$一个容许的不可约表示$(V_{\upsilon},\pi_{\upsilon})$，
+  使得对几乎所有素点$\upsilon$，$V_{\upsilon}$包含一个非零的$K_{\upsilon}$不动向量
+  $\xi_{\upsilon}^0$，使得$\pi$是$\pi_{\upsilon}$的限制张量积。
+  \end{theorem}
+
+  有了这个定理，对每个容许不可约表示$\pi$，我们总可以写$\pi =
+  \otimes
+  \pi_{\upsilon}$。这样的表示总是可以先从局部考虑问题，然后提升到整体。
+
+  \begin{theorem}
+  设$(V,\pi)$为$L_0^2(GL(n,F)\backslash
+  GL(n,A),\omega)$的一个不可约成分，那么$\pi$导出$GL(n,A)$在由$V$中的$K$-有限的向量组成的线性空间上的一个容许的不可约表示。
+  \end{theorem}
+
+   这个定理说明，$L_0^2(GL(n,F)\backslash
+   GL(n,A),\omega)$的一个不可约成分总可以导出一个自守尖点表示。
+
+  \begin{theorem}[Multiplicity one theorem\onlinecite{bump}, Jacquet-Langlands]
+  \label{thm2}
+  令$(V,\pi)$和$(V^{\prime},\pi^{\prime})$是$\mathcal
+  {A}_0(GL(n,F)\backslash GL(n,A),\omega)$的两个容许的不可约子表示。
+  假设对所有的无限素点和几乎所有的有限素点$\upsilon$
+  有$\pi_{\upsilon}\cong \pi_{\upsilon}^{\prime}$，那么$V =
+  V^{\prime}$。
+  \end{theorem}
+
+  事实上，这个定理中对无限素点$\upsilon$，$\pi_{\upsilon}\cong
+  \pi_{\upsilon}^{\prime}$的条件不是必须的。这个定理表明，那些性质比较好的$GL(n,A)$的自守尖点表示完全由局部决定。
+
+  关于定理\ref{thm1}和定理\ref{thm2}这两个定理的证明，参见\onlinecite{bump}的\S 3.4和\S3.5。
