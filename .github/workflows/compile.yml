@@ -130,6 +130,7 @@ jobs:
           rerunfilecheck
           pdfescape
           svg
+          xpatch
           tikz-cd
           ltxcmds
           fancyhdr
