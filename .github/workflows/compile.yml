@@ -106,8 +106,11 @@ jobs:
           kvoptions
           iftex
           ltxcmds
+          l3backend
           l3kernel
           l3packages
+          svg
+          transparent
           courier
           pdfpages
           xpatch
