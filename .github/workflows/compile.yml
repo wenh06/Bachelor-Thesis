@@ -22,7 +22,7 @@ jobs:
     # Don't run on forked repos.
     if: contains(fromJson('["wenh06"]'), github.repository_owner)
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9"]
@@ -60,116 +60,108 @@ jobs:
         # tlmgr info --list scheme-small
         packages: >-
           scheme-small
-          iftex
-          graphics-def
-          psnfss
-          kastrup
+          ctex
           cases
-          hycolor
-          infwarerr
-          fontspec
-          jknapltx
-          pdflscape
-          xcolor
-          trimspaces
+          pgf
+          pgfplots
+          tikz-cd
+          hypdoc
+          relsize
+          xetex
+          xecjk
+          ifoddpage
           graphics
-          bigfoot
-          kvsetkeys
-          geometry
-          amsmath
-          oberdiek
+          graphics-cfg
+          graphics-def
+          etoolbox
+          jknapltx
+          mathtools
+          anysize
+          titlesec
+          fancyhdr
+          multirow
+          float
+          arydshln
+          setspace
+          boxedminipage
+          hyperref
+          imakeidx
+          tocbibind
+          listings
+          xcolor
+          shipunov
+          caption
           booktabs
-          amsfonts
+          enumitem
+          metalogo
+          xstring
+          rsfs
+          calrsfs
+          psnfss
+          newtx
+          newtxsf
+          newpx
+          environ
+          footmisc
+          kvoptions
+          iftex
+          ltxcmds
+          l3kernel
           l3packages
+          courier
           pdfpages
-          zhnumber
-          bitset
-          pstricks-add
-          siunitx
-          pst-calculate
-          pst-plot
+          xpatch
+          perpage
+          ntheorem
           natbib
           diagbox
           pict2e
-          pst-node
-          auxhook
-          pgf
-          multido
-          enumitem
-          pst-math
-          l3kernel
-          footmisc
-          newtx
-          stringenc
-          xstring
-          translations
-          pst-tools
-          bigintcalc
-          kvdefinekeys
-          carlisle
-          url
-          pgfplots
-          transparent
-          pst-arrow
-          ntheorem
-          caption
-          kvoptions
-          pst-3d
-          etoolbox
-          koma-script
-          letltxmacro
-          uniquecounter
-          pstricks
-          multirow
-          eso-pic
           xypic
-          hobby
-          l3backend
+          pstricks
+          pstricks-add
+          pst-tools
           pst-func
+          pst-plot
           pst-text
-          refcount
-          gettitlestring
-          rerunfilecheck
-          pdfescape
-          svg
-          xpatch
-          tikz-cd
-          ltxcmds
-          fancyhdr
-          dashbox
-          hyperref
-          environ
-          ulem
-          mathtools
-          pdftexcmds
-          float
-          ctex
-          graphics-cfg
-          intcalc
-          xkeyval
-          rsfs
-          calrsfs
-          xecjk
-          xetex
-          tocbibind
-          titlesec
-          shipunov
-          setspace
-          anysize
-          arydshln
-          boxedminipage
-          courier
-          hypdoc
-          ifoddpage
-          imakeidx
-          listings
+          pst-node
+          pst-math
+          pst-3d
+          pst-arrow
+          pst-calculate
           makeplot
-          metalogo
-          mnsymbol
-          newpx
-          newtxsf
           numericplots
-          perpage
+          dashbox
+          zhnumber
+          kvsetkeys
+          xkeyval
+          carlisle
+          oberdiek
+          eso-pic
+          trimspaces
+          hycolor
+          bigfoot
+          letltxmacro
+          refcount
+          auxhook
+          url
+          rerunfilecheck
+          multido
+          siunitx
+          translations
+          mnsymbol
+          pdflscape
+          kastrup
+          ulem
+          pdftexcmds
+          infwarerr
+          kvdefinekeys
+          pdfescape
+          gettitlestring
+          intcalc
+          bigintcalc
+          bitset
+          stringenc
+          uniquecounter
     - name: Install latexmk and extra software
       run: |
         sudo apt install latexmk -y
@@ -194,7 +186,7 @@ jobs:
   github-release:
     # github release and changelog
     needs: compile
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Checkout
