@@ -108,6 +108,7 @@ jobs:
           kvdefinekeys
           carlisle
           url
+          pgfplots
           transparent
           pst-arrow
           ntheorem
@@ -125,6 +126,7 @@ jobs:
           hobby
           l3backend
           pst-func
+          pst-text
           refcount
           gettitlestring
           rerunfilecheck
@@ -145,6 +147,29 @@ jobs:
           graphics-cfg
           intcalc
           xkeyval
+          rsfs
+          calrsfs
+          xecjk
+          xetex
+          tocbibind
+          titlesec
+          shipunov
+          setspace
+          anysize
+          arydshln
+          boxedminipage
+          courier
+          hypdoc
+          ifoddpage
+          imakeidx
+          listings
+          makeplot
+          metalogo
+          mnsymbol
+          newpx
+          newtxsf
+          numericplots
+          perpage
     - name: Install latexmk and extra software
       run: |
         sudo apt install latexmk -y
