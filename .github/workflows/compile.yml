@@ -22,7 +22,7 @@ jobs:
     # Don't run on forked repos.
     if: contains(fromJson('["wenh06"]'), github.repository_owner)
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         python-version: ["3.9"]
@@ -55,6 +55,7 @@ jobs:
     - name: Setup TeX Live
       uses: teatimeguest/setup-texlive-action@v2
       with:
+        version: 2020
         # List of TeXLive-packages contained in the scheme-small
         # https://trac.macports.org/wiki/TeXLivePackages
         # tlmgr info --list scheme-small
@@ -188,7 +189,7 @@ jobs:
   github-release:
     # github release and changelog
     needs: compile
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Checkout
